@@ -1,0 +1,77 @@
+@CHARSET "UTF-8";
+.login-page{
+			margin: 0;
+			padding: 0;
+			background-color: #e5e7ed;
+
+		}
+		body{
+			font-family: Raleway,Segoe UI,Lucida Grande,Helvetica,Arial,Microsoft YaHei,FreeSans,Arimo,Droid Sans,wenquanyi micro hei,Hiragino Sans GB,Hiragino Sans GB W3,sans-serif;
+		    color: #606873;
+		    position: relative;
+		    font-size: 14px;
+		    line-height: 1.42857143;
+		    display: block;
+		}
+		.login-block{
+			width: 450px;
+			/*height: 550px;*/
+			background-color: #fff;
+			margin: 0 auto;
+			margin-top: 15px;
+			text-align: center;
+		}
+		.btn{
+			line-height: 42px;
+		    font-size: 13px;
+		    letter-spacing: 1px;
+		    border-radius: 3px;
+		    border-color: #9e7dd3;
+		    padding: 0 25;
+		    background-color: #9e7dd3;
+		    transition: all .4s ease;
+            font-weight: 500;
+		}
+		h1{
+			font-size: 24px;
+            margin-bottom: 30px;
+            font-family: Open Sans,sans-serif;
+            color: #96a2b2;
+
+		}
+		
+		.hr-xs{
+			margin-top: 5px;
+            margin-bottom: 5px;
+		}
+		hr{
+			   border-top: 1px solid #eee;
+			   width:300px;
+		}
+		.submit,.form-control{
+			border: 0;
+			width: 350px;
+			height: 45px;
+			line-height: 25px;
+			outline:none;/*去掉高亮效果*/
+			margin-left: 45px;
+		}
+		.btn-block{
+			margin-top: 50px;
+			width: 300px;
+			margin-right: 35px;
+		}
+		.login-links{
+			margin-top: 50px;
+			padding-bottom:20px;
+
+		}
+		.pull-left{
+			padding-right: 150px;
+		}
+		.user{
+		    
+		  margin-top:50px;
+		  
+		    
+		}

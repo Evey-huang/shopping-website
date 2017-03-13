@@ -1,0 +1,218 @@
+@CHARSET "UTF-8";
+*
+{
+	margin: 0;
+	padding: 0;
+}
+
+body
+{
+	font-size: 10pt;
+	/*behavior:url(css/csshover.htc);兼容IE*/
+}
+
+.topmenu
+{
+	display: block;
+	width: 220px;
+	border: 2px solid #e4393c;
+	margin:100px 0px 200px 50px;/*test*/
+}
+
+.toptitle
+{
+	height: 40px;
+	line-height: 40px;
+	text-align: left;
+	font-size: 11pt;/*11磅*/
+	font-weight: bold;
+	color: white;
+	background: #e4393c;/*红色*/
+	padding-left: 20px;
+}
+
+.topmenu li
+{
+	height: 30px;
+	line-height: 30px;
+	font-size: 11pt;
+	list-style-type:none;
+	text-align: left;
+	padding-left: 8px;
+	z-index: 3;/*用于悬浮层，区别上下层 */	
+}
+
+.topmenu li a
+{
+	text-decoration: none;/*去除下划线*/
+	color: #313131;
+}
+
+.topmenu li a:hover
+{
+	text-decoration: underline;/*下划线*/
+	font-weight: bold;
+	color: #e4393c;
+}
+
+.topmenu li:hover
+{
+	border: 1px solid #DDD;
+	border-right: 0;/*隐藏右边框*/
+	box-shadow: 0 0 8px #DDD;/*外发光*/
+	-moz-box-shadow:0 0 8px #DDD;/*兼容*/
+	-webkit-box-shadow:0 0 8px #DDD;
+	background-image: none;/*去掉背景图片（小箭头）*/
+}
+
+.submenu
+{
+	display: none;/*隐藏*/
+	width: 715px;
+	left: 250px;
+	position: absolute;
+	top: 70px;
+	border: 1px solid #DDD;
+	z-index: 4;/*悬浮*/
+	background: white;
+	box-shadow: 0 0 8px #DDD;/*外发光*/
+	-moz-box-shadow:0 0 8px #DDD;/*兼容*/
+	-webkit-box-shadow:0 0 8px #DDD;
+}
+
+.leftdiv
+{
+	/*background: gray;*/
+	float: left;
+	width: 490px;
+	margin: 5px;
+}
+
+.rightdiv
+{
+	/*background: blue;*/
+	float: left;
+	width: 200px;
+	margin: 5px;
+}
+
+.topmenu li:hover .submenu
+{
+	display: block;/*使对应悬浮层显示*/
+}
+
+.topmenu li:hover span
+{
+	background: white;/*用一个白色方块遮住右边边框达到隐形效果*/
+	display: inline-block;/*使白色方框和超链接保持在一个水平上*/
+	z-index: 20;
+	width: 20px;
+	height: 30px;/*和li的高度一致*/
+	float: right;
+	position: relative;
+
+}
+
+.leftdiv dl
+{
+	display: block;
+	border-bottom: 1px solid #EEE;
+	padding-bottom: 6px;
+	overflow: hidden;/*防止溢出*/
+}
+
+.leftdiv dl dt
+{
+	display: block;
+	float: left;
+	width: 60px;
+	text-align: right;/*右对齐*/
+	height:22px;
+	line-height: 22px;
+	padding-right: 6px;
+}
+
+.leftdiv dl dt a
+{
+	color: #e4393c;
+	font-weight: bold;
+	text-decoration: underline;
+	font-size: 10pt;
+}
+
+.leftdiv dl dd
+{
+	display: block;
+	overflow: hidden;
+}
+
+.leftdiv dl dd a
+{
+	display: block;/*块显示*/
+	float: left;
+	border-left: 1px solid #CCC;
+	color:737373;
+	font-size: 9pt;
+	padding:0 8px;
+	height: 14px;
+	line-height: 14px;
+	margin: 4px 0;
+}
+
+.rightdiv dl dt
+{
+	color:#e4393c;
+	font-weight: bold;
+	font-size: 10pt;
+}
+
+.recommend
+{
+	position: absolute;
+	left: 400px;
+	top: 70px;
+	width: 900px;
+	
+	font-family:Arial;/*为了设置人民币符号*/
+}
+
+.recommend img
+{
+    width:160px;
+    height: 207px;
+}
+
+.recommend dl
+{
+   padding-top:20px;
+   float:left;
+   padding-right:60px;
+}
+        
+.recommend dd
+{
+    padding-top:12px; 
+}
+
+.price
+{
+	color: red;
+}
+        
+.clearfix
+{
+    display: inline-block;
+    clear:both;
+}
+
+
+.copyright 
+{
+  background: #111;
+  font-size: 13px;
+  text-align: center;
+  color: #555555;
+  padding-top: 15px;
+  padding-bottom: 30px;
+  border-top: 1px solid #303030;
+}

@@ -1,0 +1,163 @@
+package yznu;
+
+import java.io.UnsupportedEncodingException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class dbp {
+	int size=5;
+	Connection con = null;
+	PreparedStatement pre = null;
+	Statement sta = null;
+	ResultSet rs;
+	boolean f=false;
+	
+	public boolean insert(String id,String text,String bookname){
+		
+		 try {
+			 dbpool conns = new dbpool();
+			con = conns.getConnection();
+			pre=con.prepareStatement("insert into stuser1 values(?,?,?)");
+			
+			   pre.setString(1,id);
+			   pre.setString(2,text);
+			   pre.setString(3,bookname);
+			     int temp=pre.executeUpdate();
+			    if(temp!=0){
+			System.out.println("图书信息添   加成功");
+			f=true;
+		} 
+		 }
+			    catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			  
+		return f;
+	}
+	public ArrayList<Student> dis( int currentPage){
+		
+		ArrayList<Student> students=new ArrayList<Student>();
+		try {
+			dbpool conns = new dbpool();
+			con = conns.getConnection();
+			sta=con.createStatement();
+			rs=sta.executeQuery("select * from stuser1 limit "+(currentPage-1)*size+","+size);
+			while(rs.next()){
+				Student student=new Student();
+				student.setId(rs.getString("id"));
+				student.setName(rs.getString("authorname"));
+				student.setBookName(rs.getString("bookname"));
+				student.setImg(rs.getString("img"));
+				students.add(student);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return students;
+	}
+	public  boolean deleteStudent(String id) {
+		dbpool conns = new dbpool();
+		con = conns.getConnection();
+		try {
+			pre=con.prepareStatement("DELETE FROM stuser1 WHERE id=?");
+			pre.setString(1,id);
+			int temp=pre.executeUpdate();
+		    if(temp!=0){
+		    System.out.println("书籍删除成功");
+		    f=true;
+		    }
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return f;
+		
+	}
+	public ArrayList<Student> serch(String text) {
+		ArrayList<Student> students=new ArrayList<Student>();
+		try {
+			dbpool conns = new dbpool();
+			con = conns.getConnection();
+			pre=con.prepareStatement("SELECT * FROM stuser1 WHERE authorname LIKE ?");
+			pre.setString(1, "%" + text + "%");
+			
+			rs=pre.executeQuery();
+			while(rs.next()){
+				Student student=new Student();
+				student.setId(rs.getString("id"));
+				student.setName(rs.getString("authorname"));
+				student.setBookName(rs.getString("bookname"));
+				student.setImg(rs.getString("img"));
+
+				students.add(student);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return students;
+		
+	}
+	public boolean updateStudent(String id, String text, String bookname) {
+
+		 try {
+			 dbpool conns = new dbpool();
+			con = conns.getConnection();
+			pre=con.prepareStatement("UPDATE stuser1 SET id=?,authorname=? WHERE bookname=?");
+			   pre.setString(1,id);
+			   pre.setString(2,text);
+			   pre.setString(3,bookname);
+			     int temp=pre.executeUpdate();
+			    if(temp!=0){
+			System.out.println("学生信息添   加成功");
+			f=true;
+		} 
+		 }
+			    catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return f;
+	}
+	public int countPage(){
+		int countPage=0;   //存储总页数
+		// 连接数据库 完成数据的录入操作
+		Connection con = null;
+		PreparedStatement pre = null;
+		ResultSet rs=null;
+		dbpool conns = new dbpool();
+		con = conns.getConnection();
+		try {
+			pre = con.prepareStatement("SELECT COUNT(*) total FROM stuser1 ");
+			//pre.setString(1, "%" + name + "%");
+			rs=pre.executeQuery();
+			if(rs.next()){
+				//表达式 ? 值 :值
+				int total=rs.getInt("total");
+				countPage=total%size==0?total/5:total/5+1;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	
+		return countPage;
+	}
+	
+}
+
+	
+

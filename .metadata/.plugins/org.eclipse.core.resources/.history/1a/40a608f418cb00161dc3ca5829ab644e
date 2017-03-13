@@ -1,0 +1,123 @@
+package yznu;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+@SuppressWarnings("serial")
+public class MySer extends HttpServlet {
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("gb2312");
+		response.setContentType("text/html;charset=gb2312");
+		PrintWriter out = response.getWriter();
+		String status=request.getParameter("status");
+		@SuppressWarnings("unused")
+		Student stu=new Student();
+		 dbp db=new dbp(); 
+		 @SuppressWarnings("unused")
+		Student stu1=new Student();
+	   
+	if(status.equals("insert")){
+		String id=request.getParameter("id"); 
+		
+	    String text=request.getParameter("name");
+	    byte [] b=text.getBytes("iso-8859-1");
+	    text=new String(b,"gb2312");
+	    System.out.println(text);
+	    
+	    String bookname=request.getParameter("bookname");//转码
+	    byte [] a=bookname.getBytes("iso-8859-1");
+	    bookname=new String(a,"gb2312");
+	    System.out.println(bookname);
+	    
+	    boolean fl=db.insert(id,text,bookname);//
+	    if(fl==true){
+	    	//插入不需要获取currentPage currentPage这个值不在 所以是空的
+	    	 /*int currentPage=Integer.parseInt(request.getParameter("currentPage"));
+				//更新session中的当前页
+				request.getSession().setAttribute("currentPage", currentPage);
+				 ArrayList<Student> students=db.dis(currentPage);
+			 request.setAttribute("students", students);*/
+			 RequestDispatcher dispatcher=request.getRequestDispatcher("/jsp/MyJsp.jsp");
+			 dispatcher.forward(request, response);
+	    	return ;
+	    }
+	}
+	   else if(status.equals("dis")){ 
+		   int currentPage;
+		   if(request.getParameter("currentPage")!=null){
+			   currentPage =Integer.parseInt(request.getParameter("currentPage"));
+		   }else{
+			   currentPage = (Integer)request.getSession().getAttribute("currentPage");
+		   }
+			//更新session中的当前页
+			request.getSession().setAttribute("currentPage", currentPage);
+			int countPage=db.countPage();
+			request.getSession().setAttribute("countPage", countPage);
+			 ArrayList<Student> students=db.dis(currentPage);
+			 request.setAttribute("students", students);
+			 
+			 RequestDispatcher dispatcher=request.getRequestDispatcher("/jsp/dis.jsp");
+			 dispatcher.forward(request, response);
+			 return ;
+		 }	
+	   else if(status.equals("serch")){
+		   String text=request.getParameter("name");
+		    byte [] b=text.getBytes("iso-8859-1");
+		    text=new String(b,"gb2312");
+		   ArrayList<Student> students=db.serch(text);
+			request.setAttribute("students", students);
+		    RequestDispatcher dispatcher=request.getRequestDispatcher("/jsp/serchinput.jsp");
+			 dispatcher.forward(request, response);
+			 return ; 
+				}	 
+	   else if(status.equals("deleteStudent")){
+			String id=request.getParameter("id");
+			System.out.println(id);
+			 boolean fl=db.deleteStudent(id);
+			 if(fl==true){
+				 int currentPage=Integer.parseInt(request.getParameter("currentPage"));
+					//更新session中的当前页
+					request.getSession().setAttribute("currentPage", currentPage);
+					 ArrayList<Student> students=db.dis(currentPage);
+				 request.setAttribute("students", students);
+				 RequestDispatcher dispatcher=request.getRequestDispatcher("/jsp/dis.jsp");
+				 dispatcher.forward(request, response);
+		    	return ;
+		    }
+	   }
+	   else if(status.equals("updateStudent")){
+		   String id=request.getParameter("id"); 
+		   
+		    String text=request.getParameter("name");
+		    byte [] b=text.getBytes("iso-8859-1");
+		    text=new String(b,"gb2312");
+		    System.out.println(text);
+		    
+		    String bookname=request.getParameter("bookname"); //
+		    
+		    boolean fl=db.updateStudent(id,text,bookname);//
+		    if(fl==true){
+		    	 int currentPage=Integer.parseInt(request.getParameter("currentPage"));
+					//更新session中的当前页
+					request.getSession().setAttribute("currentPage", currentPage);
+					 ArrayList<Student> students=db.dis(currentPage);
+				 request.setAttribute("students", students);
+				 RequestDispatcher dispatcher=request.getRequestDispatcher("/jsp/dis.jsp");
+				 dispatcher.forward(request, response);
+		    	return ;
+		    }
+		}
+		 out.flush();
+		out.close();
+	}
+}

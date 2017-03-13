@@ -1,0 +1,14 @@
+#Mon Dec 26 11:37:03 CST 2016
+myeclipseTomcatServer.MyDb.contextRoot=/MyDb
+myeclipseTomcatServer.MyDb.deploymentPath=C\:\\Users\\tutu\\Desktop\\JSP\u671F\u672B\u5927\u4F5C\u4E1A\uFF08\u4E8C\u7A3F\uFF09\\.metadata\\.me_tcat\\webapps\\MyDb
+myeclipseTomcatServer.MyDb.isDeployed=true
+myeclipseTomcatServer.MyDb.shouldOverwrite=false
+myeclipseTomcatServer.MyDb.noFileCopy=false
+myeclipseTomcatServer.MyDb.altContextRoot=/MyDb
+myeclipseTomcatServer.MyDb.shouldBackup=false
+myeclipseTomcatServer.MyDb.IEARProjectName=
+myeclipseTomcatServer.MyDb.isExploded=true
+eclipse.preferences.version=1
+myeclipseTomcatServer.MyDb.type=WebDeployment
+myeclipseTomcatServer.MyDb.isUptoDate=true
+myeclipseTomcatServer.MyDb.deployIsOverProject=false
