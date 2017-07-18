@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
  <head>
    
-    <title>µÇÂ¼</title>
+    <title>ç™»å½•</title>
     <link rel="stylesheet" type="text/css" href="css/login.css"> 
 </head>
  <body class="login-page">
@@ -17,31 +17,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a href="#">
 			   <img src="img/login.jpg" width="138px" height="100px" alt="">
 			</a>
-			<h1>µÇÂ¼Îå·ÖÖÓ£¬Ñ§Ï°Á½Ğ¡Ê±</h1>
+			<h1>ç™»å½•äº”åˆ†é’Ÿï¼Œå­¦ä¹ ä¸¤å°æ—¶</h1>
 			
 			<form action="LoginSer">
 				<div class="form-group">
 	                <div class="input-group">
-	                   <input type="text" class="form-control" name="username" placeholder="ÓÃ»§Ãû">
+	                   <input type="text" class="form-control" name="username" placeholder="ç”¨æˆ·å">
 	                </div>
                 </div>
                 <hr class="hr-xs">
 	            <div class="form-group">
 	                <div class="input-group">
-	                  <input type="password" class="form-control" name="password" placeholder="ÃÜÂë">
+	                  <input type="password" class="form-control" name="password" placeholder="å¯†ç ">
 	                </div>
 	            </div>
                 <hr class="hr-xs">
                 
-                <input class="user" type="radio"  name="select" value="ÓÃ»§" checked="checked">ÓÃ»§&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input class="user" type="radio"  name="select" value="¹ÜÀíÔ±">¹ÜÀíÔ±
+                <input class="user" type="radio"  name="select" value="ç”¨æˆ·" checked="checked">ç”¨æˆ·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="user" type="radio"  name="select" value="ç®¡ç†å‘˜">ç®¡ç†å‘˜
                 
 	            <input type="hidden" name="status" value="login" >
-	            <input type="submit" class=" submit btn btn-primary btn-block" value="Ìá½»"/>
+	            <input type="submit" class=" submit btn btn-primary btn-block" value="æäº¤"/>
 	            
 	            <div class="login-links">
-			        <a class="pull-left" href="#">Íü¼ÇÃÜÂë?</a>
-			        <a class="pull-right" href="res.jsp">×¢²áÒ»¸öÕËºÅ</a>
+			        <a class="pull-left" href="#">å¿˜è®°å¯†ç ?</a>
+			        <a class="pull-right" href="res.jsp">æ³¨å†Œä¸€ä¸ªè´¦å·</a>
 	            </div>
 			</form> 
 			
